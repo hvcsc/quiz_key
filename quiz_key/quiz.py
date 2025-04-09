@@ -24,6 +24,16 @@ def quiz():
                 print("Please choose a, b, c, or d.")
 
     #append the questions and choices
-    #ask if the user wants to input more questions
+        questions.append({
+            "questions": questions,
+            "choices": choices,
+            "answer": answer,
+        })
+
+        #ask if the user wants to input more questions
+        cont = input("Do you want to enter another question? (y/n): ").strip().lower()
+        if cont != "yes":
+            break
+        
     #store to text file
 #call def
