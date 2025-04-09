@@ -23,7 +23,7 @@ def quiz():
             else:
                 print("Please choose a, b, c, or d.")
 
-    #append the questions and choices
+        #append the questions and choices
         questions.append({
             "questions": questions,
             "choices": choices,
@@ -34,6 +34,17 @@ def quiz():
         cont = input("Do you want to enter another question? (y/n): ").strip().lower()
         if cont != "yes":
             break
-        
+
     #store to text file
+    with open(text_file, "w") as file:
+        for q in questions:
+            file.write(f"{q['question']}\n")
+            file.write(f"{q['choices']['a']}\n")
+            file.write(f"{q['choices']['b']}\n")
+            file.write(f"{q['choices']['c']}\n")
+            file.write(f"{q['choices']['d']}\n")
+            file.write(f"answer: {q['answer']}\n")
+
+    print(f"\n{len(questions)} question/s saved to '{text_file}'.")
+    
 #call def
