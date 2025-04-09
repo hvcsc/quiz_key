@@ -44,7 +44,7 @@ def quiz():
             break
 
     #store to text file
-    with open(text_file, "w") as file:
+    with open(text_file, "a") as file:
         for q in questions:
             file.write(f"{q['question']}\n")
             file.write(f"{q['choices']['a']}\n")
