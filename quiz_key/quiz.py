@@ -39,7 +39,7 @@ def quiz():
 
         #ask if the user wants to input more questions
         cont = input("Do you want to enter another question? (y/n): ").strip().lower()
-        if cont != "yes":
+        if cont != "y":
             print("Bye.")
             break
 
