@@ -10,14 +10,21 @@ def quiz():
         question = input("Question: ")
 
         choices = {}
-        choices["a"] = input("\nChoice a: ")
-        choices["b"] = input("Choice b: ")
-        choices["c"] = input("Choice c: ")
-        choices["d"] = input("Choice d: ")
+        choices["a"] = input("Option a: ")
+        choices["b"] = input("Option b: ")
+        choices["c"] = input("Option c: ")
+        choices["d"] = input("Option d: ")
+
+        while not all(choices[key] for key in ['a', 'b', 'c', 'd']):
+            print("Please make sure all options are filled in.")
+            choices['a'] = input("Option a: ")
+            choices['b'] = input("Option b: ")
+            choices['c'] = input("Option c: ")
+            choices['d'] = input("Option d: ")
 
         #ask for correct answer
         while True:
-            answer = input("Correct answer (a/b/c/d: ").lower()
+            answer = input("Correct answer (a/b/c/d): ").lower()
             if answer in choices:
                 break
             else:
@@ -25,7 +32,7 @@ def quiz():
 
         #append the questions and choices
         questions.append({
-            "questions": questions,
+            "question": question,
             "choices": choices,
             "answer": answer,
         })
@@ -33,6 +40,7 @@ def quiz():
         #ask if the user wants to input more questions
         cont = input("Do you want to enter another question? (y/n): ").strip().lower()
         if cont != "yes":
+            print("Bye.")
             break
 
     #store to text file
@@ -44,7 +52,10 @@ def quiz():
             file.write(f"{q['choices']['c']}\n")
             file.write(f"{q['choices']['d']}\n")
             file.write(f"answer: {q['answer']}\n")
+            file.write("\n")
 
     print(f"\n{len(questions)} question/s saved to '{text_file}'.")
-    
+
 #call def
+if __name__ == "__main__":
+    quiz()
