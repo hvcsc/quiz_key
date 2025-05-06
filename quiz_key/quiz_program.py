@@ -140,9 +140,30 @@ class QuizGame:
         )
         self.exit_button.pack(side = "right", padx = 20)
 
-#disable all answer buttons
-#green for correct, red for wrong
-#enable next button
+    #disable all answer buttons
+    #green for correct, red for wrong
+    def check_answer(self, selected):
+        if self.is_paused:
+            return
+
+        correct = self.questions[self.question_index]["answer"]
+        for key, btn in self.answer_buttons:
+            btn.config(state = "disabled")
+            if key == correct:
+                btn.config(bg = "lightgreen")
+            elif key == selected:
+                btn.config(bg = "salmon")
+
+        if selected == correct:
+            self.score += 1
+
+        self.next_button.config(state="normal")
+
+    #enable next button
+    def next_question(self):
+        self.question_index += 1
+        self.display_question()
+
 #pause: freeze the screen and show message
 #resume: continue the quiz
 #show congratulations message
