@@ -19,12 +19,36 @@ class QuizGame:
         self.questions = self.load_questions()
         random.shuffle(self.questions)
         self.is_paused = False
-    
+
         self.create_start_screen()
 
-#read the quiz txt
-#parse each bock: question, options, and the correct answer
-#append to questions list
+    def load_questions(self):
+        questions = []
+        try:
+            #read the quiz txt
+            with open("quiz_key.txt", "r") as file:
+                content = file.read().strip().split("\n\n")
+                #parse each bock: question, options, and the correct answer
+                #append to questions list
+                for block in content:
+                    lines = block.strip().split("\n")
+                    question = lines[0]
+                    choices = {
+                        'a': lines[1][3:].strip(),
+                        'b': lines[2][3:].strip(),
+                        'c': lines[3][3:].strip(),
+                        'd': lines[4][3:].strip()
+                    }
+                    answer = lines[5].split(":")[1].strip()
+                    questions.append({
+                        "question": question,
+                        "choices": choices,
+                        "answer": answer
+                    })
+        except FileNotFoundError:
+            messagebox.showerror("Error", "quiz_key.txt not found!")
+        return questions
+
 #create centered title and start button
 #display the questions and options
 #display pause, exit, and disabled next button
