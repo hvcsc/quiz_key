@@ -1,6 +1,6 @@
 #import tkinter and random
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import (messagebox)
 import random
 
 #define the quizgame class
@@ -10,7 +10,7 @@ class QuizGame:
         self.root = root
         self.root.title("Object-Oriented Programming Quiz")
         self.root.geometry("700x500")
-        self.root.config(bg="#EAE0D5")
+        self.root.config(bg = "#EAE0D5")
         #load quiz questions
         #display quiz questions
         #show question one at a time
@@ -52,7 +52,7 @@ class QuizGame:
     #create centered title and start button
     def create_start_screen(self):
         self.clear_screen()
-        frame = tk.Frame(self.root, bg="#EAE0D5")
+        frame = tk.Frame(self.root, bg = "#EAE0D5")
         frame.place(relx = 0.5, rely = 0.5, anchor = "center")
 
         title_label = tk.Label(frame, text = "Object-Oriented Programming Quiz", font = ("Times New Roman", 24, "bold"), bg = "#EAE0D5", fg = "#22333B")
@@ -67,10 +67,79 @@ class QuizGame:
         self.clear_screen()
         self.display_question()
 
+    #display the questions and options
+    def display_question(self):
+        self.clear_screen()
 
-#display the questions and options
-#display pause, exit, and disabled next button
-#bottom frame with controls
+        if self.question_index >= len(self.questions):
+            self.show_score()
+            return
+
+        current_question = self.questions[self.question_index]
+
+        self.top_frame = tk.Frame(self.root, bg = "#EAE0D5")
+        self.top_frame.pack(expand = True)
+
+        self.question_label = tk.Label(
+            self.top_frame,
+            text = current_question["question"],
+            font = ("Times New Roman", 18),
+            wraplength = 600,
+            justify = "center",
+            bg = "#EAE0D5",
+            fg = "#22333B"
+        )
+        self.question_label.pack(pady = 10)
+
+        self.answer_buttons = []
+        for key in ['a', 'b', 'c', 'd']:
+            btn = tk.Button(
+                self.top_frame,
+                text = f"{key}.{current_question['choices'][key]}",
+                font = ("Times New Roman", 14),
+                bg = "#C6AC8E",
+                width = 40,
+                command = lambda k = key: self.check_answer(k)
+            )
+            btn.pack(pady = 5)
+            self.answer_buttons.append((key, btn))
+
+        #display pause, exit, and disabled next button
+        #bottom frame with controls
+        self.bottom_frame = tk.Frame(self.root, bg = "#EAE0D5")
+        self.bottom_frame.pack(side = "bottom", pady = 20)
+
+        self.pause_button = tk.Button(
+            self.bottom_frame,
+            text = "Pause",
+            font = ("Times New Roman", 12),
+            bg = "#C6AC8E",
+            fg = "#0A0908",
+            command = self.toggle_pause
+        )
+        self.pause_button.pack(side = "left", padx = 20)
+
+        self.next_button = tk.Button(
+            self.bottom_frame,
+            text = "Next",
+            font = ("Times New Roman", 12),
+            bg = "#C6AC8E",
+            fg = "#0A0908",
+            command = self.next_question,
+            state = "disabled"
+        )
+        self.next_button.pack(side = "left", padx = 20)
+
+        self.exit_button = tk.Button(
+            self.bottom_frame,
+            text = "Exit",
+            font = ("Times New Roman", 12),
+            bg = "#5E503F",
+            fg = "white",
+            command = self.root.quit
+        )
+        self.exit_button.pack(side = "right", padx = 20)
+
 #disable all answer buttons
 #green for correct, red for wrong
 #enable next button
