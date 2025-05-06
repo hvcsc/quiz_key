@@ -1,5 +1,5 @@
-#assign to text file
-#create list
+# assign to text file
+# create list
 def quiz():
     text_file = "quiz_key.txt"
     questions = []
@@ -17,10 +17,10 @@ def quiz():
 
         while not all(choices[key] for key in ['a', 'b', 'c', 'd']):
             print("Please make sure all options are filled in.")
-            choices['a'] = input("Option a: ")
-            choices['b'] = input("Option b: ")
-            choices['c'] = input("Option c: ")
-            choices['d'] = input("Option d: ")
+            choices["a"] = input("Option a: ")
+            choices["b"] = input("Option b: ")
+            choices["c"] = input("Option c: ")
+            choices["d"] = input("Option d: ")
 
         #ask for correct answer
         while True:
@@ -47,10 +47,10 @@ def quiz():
     with open(text_file, "a") as file:
         for q in questions:
             file.write(f"{q['question']}\n")
-            file.write(f"{q['choices']['a']}\n")
-            file.write(f"{q['choices']['b']}\n")
-            file.write(f"{q['choices']['c']}\n")
-            file.write(f"{q['choices']['d']}\n")
+            file.write(f"a. {q['choices']['a']}\n")
+            file.write(f"b. {q['choices']['b']}\n")
+            file.write(f"c. {q['choices']['c']}\n")
+            file.write(f"d. {q['choices']['d']}\n")
             file.write(f"answer: {q['answer']}\n")
             file.write("\n")
 
