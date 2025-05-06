@@ -242,3 +242,7 @@ class QuizGame:
             widget.destroy()
 
 #launch the quiz
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = QuizGame(root)
+    root.mainloop()
