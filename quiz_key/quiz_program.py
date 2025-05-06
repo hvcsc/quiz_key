@@ -164,8 +164,26 @@ class QuizGame:
         self.question_index += 1
         self.display_question()
 
-#pause: freeze the screen and show message
-#resume: continue the quiz
+    #pause: freeze the screen and show message
+    #resume: continue the quiz
+    def toggle_pause(self):
+        if self.is_paused:
+            self.is_paused = False
+            self.pause_button.config(text = "Pause")
+            self.display_question()
+        else:
+            self.is_paused = True
+            self.pause_button.config(text = "Resume")
+            self.clear_screen()
+            pause_label = tk.Label(
+                self.root,
+                text=  "Quiz Paused",
+                font = ("Times New Roman", 20),
+                bg = "#EAE0D5",
+                fg = "#22333B"
+            )
+            pause_label.place(relx = 0.5, rely = 0.5, anchor = "center")
+
 #show congratulations message
 #display the score and add restart/exit buttons
 #launch the quiz
