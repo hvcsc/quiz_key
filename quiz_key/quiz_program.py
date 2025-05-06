@@ -169,21 +169,76 @@ class QuizGame:
     def toggle_pause(self):
         if self.is_paused:
             self.is_paused = False
-            self.pause_button.config(text = "Pause")
             self.display_question()
         else:
             self.is_paused = True
-            self.pause_button.config(text = "Resume")
             self.clear_screen()
             pause_label = tk.Label(
                 self.root,
-                text=  "Quiz Paused",
+                text = "Quiz Paused",
                 font = ("Times New Roman", 20),
                 bg = "#EAE0D5",
                 fg = "#22333B"
             )
-            pause_label.place(relx = 0.5, rely = 0.5, anchor = "center")
+            pause_label.place(relx = 0.5, rely = 0.4, anchor = "center")
 
-#show congratulations message
-#display the score and add restart/exit buttons
+            resume_button = tk.Button(
+                self.root,
+                text = "Resume",
+                font = ("Times New Roman", 14),
+                bg = "#C6AC8E",
+                fg = "#0A0908",
+                command = self.toggle_pause
+            )
+            resume_button.place(relx = 0.5, rely = 0.6, anchor = "center")
+
+    #show congratulations message
+    #display the score and add restart/exit buttons
+    def show_score(self):
+        self.clear_screen()
+        frame = tk.Frame(self.root, bg = "#EAE0D5")
+        frame.place(relx = 0.5, rely = 0.5, anchor = "center")
+
+        congrats_label = tk.Label(
+            frame,
+            text = "Congratulations!",
+            font = ("Times New Roman", 22, "bold"),
+            bg = "#EAE0D5",
+            fg = "#22333B"
+        )
+        congrats_label.pack(pady = 10)
+
+        score_label = tk.Label(
+            frame,
+            text = f"Score: {self.score}/{len(self.questions)}",
+            font = ("Times New Roman", 18),
+            bg = "#EAE0D5",
+            fg = "#22333B"
+        )
+        score_label.pack(pady = 5)
+
+        restart_button = tk.Button(
+            frame,
+            text = "Restart",
+            font = ("Times New Roman", 14),
+            bg = "#C6AC8E",
+            fg = "#0A0908",
+            command = self.start_quiz
+        )
+        restart_button.pack(pady = 10)
+
+        exit_button = tk.Button(
+            frame,
+            text = "Exit",
+            font = ("Times New Roman", 14),
+            bg = "#5E503F",
+            fg = "white",
+            command = self.root.quit
+        )
+        exit_button.pack()
+
+    def clear_screen(self):
+        for widget in self.root.winfo_children():
+            widget.destroy()
+
 #launch the quiz
