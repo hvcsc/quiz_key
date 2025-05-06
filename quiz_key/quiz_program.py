@@ -49,7 +49,25 @@ class QuizGame:
             messagebox.showerror("Error", "quiz_key.txt not found!")
         return questions
 
-#create centered title and start button
+    #create centered title and start button
+    def create_start_screen(self):
+        self.clear_screen()
+        frame = tk.Frame(self.root, bg="#EAE0D5")
+        frame.place(relx = 0.5, rely = 0.5, anchor = "center")
+
+        title_label = tk.Label(frame, text = "Object-Oriented Programming Quiz", font = ("Times New Roman", 24, "bold"), bg = "#EAE0D5", fg = "#22333B")
+        title_label.pack(pady = 20)
+
+        start_button = tk.Button(frame, text = "Start", command = self.start_quiz, font = ("Times New Roman", 16), bg = "#C6AC8E", fg = "#0A0908", width = 12)
+        start_button.pack()
+
+    def start_quiz(self):
+        self.score = 0
+        self.question_index = 0
+        self.clear_screen()
+        self.display_question()
+
+
 #display the questions and options
 #display pause, exit, and disabled next button
 #bottom frame with controls
