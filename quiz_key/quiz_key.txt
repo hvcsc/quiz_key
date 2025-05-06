@@ -1,0 +1,70 @@
+Which of the following is not a principle of OOP?
+a. Encapsulation
+b. Inheritance
+c. Compilation
+d. Polymorphism
+answer: c
+
+Which feature of OOP allows code reusability?
+a. Encapsulation
+b. Inheritance
+c. Polymorphism
+d. Abstraction
+answer: b
+
+Which keyword is used to create an object in Java?
+a. class
+b. new
+c. object
+d. void
+answer: b
+
+Which of the following allows different classes to be treated as instances of the same class through a common interface?
+a. Abstraction
+b. Encapsulation
+c. Polymorphism
+d. Aggregation
+answer: c
+
+Which OOP concept hides internal object details?
+a. Abstraction
+b. Inheritance
+c. Encapsulation
+d. Overloading
+answer: c
+
+What does the term "constructor" refer to in OOP?
+a. A method that destorys objects
+b. A variable that holds data
+c. A method used to initialize an object
+d. A class that extends another class
+answer: c
+
+In OOP, what is "composition"?
+a. A type of polymorphism
+b. A form of inheritance
+c. A has-a relationship between classes
+d. A class extending multiple interfaces
+answer: c
+
+Which of these is not a type of inheritance in OOP?
+a. Single
+b. Double
+c. Multilevel
+d. Hierarchical
+answer: b
+
+What is the output of print(2**3)?
+a. 5
+b. 6
+c. 8
+d. 9
+answer: c
+
+What will be the output of print("hello"[1:4])?
+a. hel
+b. ello
+c. ell
+d. hello
+answer: c
+
