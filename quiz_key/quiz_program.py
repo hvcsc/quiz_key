@@ -99,7 +99,7 @@ class QuizGame:
                 font = ("Times New Roman", 14),
                 bg = "#C6AC8E",
                 width = 40,
-                command = lambda k = key: self.check_answer(k)
+                command = lambda selected_key = key: self.check_answer(selected_key)
             )
             btn.pack(pady = 5)
             self.answer_buttons.append((key, btn))
